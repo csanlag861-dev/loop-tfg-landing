@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 interface Props {
   title?: string;
@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = 'Loop — La red social donde el ecosistema IT conecta',
-  description = 'Plataforma creada como TFG para reunir a desarrolladores y profesionales IT. Comparte ideas, aprende de los seniors y crece como dev.',
+  title = "Loop — La red social donde el ecosistema IT conecta",
+  description = "Plataforma creada como TFG para reunir a desarrolladores y profesionales IT. Comparte ideas, aprende de los seniors y crece como dev.",
 } = Astro.props;
 ---
 
@@ -26,8 +26,7 @@ const {
     <meta property="og:type" content="website" />
 
     <title>{title}</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <!-- Preconnect para Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,14 +40,16 @@ const {
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
+              entry.target.classList.add("visible");
             }
           });
         },
-        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+        { threshold: 0.1, rootMargin: "0px 0px -40px 0px" },
       );
 
-      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
     </script>
   </body>
 </html>
