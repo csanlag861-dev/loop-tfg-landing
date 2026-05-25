@@ -1,0 +1,257 @@
+---
+const challenges = [
+  {
+    icon: "🐳",
+    title: "Configuración de Docker en producción",
+    desc: "Multi-stage build con NestJS requiere npm ci completo (devDependencies incluidas) porque @nestjs/cli es necesario en el build. El stage final copia solo el dist.",
+    label: "DevOps",
+  },
+  {
+    icon: "🔐",
+    title: "Prisma 7 — Breaking changes",
+    desc: "La migración a Prisma 7 trasladó la configuración de conexión a prisma.config.ts. La generación en build-time necesita una URL placeholder fallback.",
+    label: "ORM",
+  },
+  {
+    icon: "🌐",
+    title: "Doble URL de API en Docker",
+    desc: "API_URL (http://backend:3000) para fetch server-side entre contenedores y NEXT_PUBLIC_API_URL (http://localhost:3000) para el cliente. Mezclarlas causa 404s silenciosos.",
+    label: "Next.js",
+  },
+  {
+    icon: "🔄",
+    title: "Infinite Scroll con cursor pagination",
+    desc: "La paginación por offset degrada con tablas grandes. Se implementó cursor-based pagination en el backend y useInfiniteQuery en el frontend.",
+    label: "Performance",
+  },
+  {
+    icon: "🪙",
+    title: "Session Sliding con JWT dual",
+    desc: "Access token de corta duración + refresh token persistente. El cliente detecta el 401 e intenta renovar antes de redirigir al login.",
+    label: "Auth",
+  },
+  {
+    icon: "💾",
+    title: "Soft delete sin soporte nativo",
+    desc: "Prisma no tiene soft delete incorporado. Se resolvió con un campo deletedAt: DateTime? y filtros manuales en cada query relevante.",
+    label: "Prisma",
+  },
+];
+
+const improvements = [
+  {
+    icon: "💬",
+    title: "Chat en tiempo real",
+    desc: "WebSockets con Socket.io para mensajería privada",
+  },
+  {
+    icon: "🤖",
+    title: "Moderación con IA",
+    desc: "Microservicio FastAPI para detección de lenguaje ofensivo",
+  },
+  {
+    icon: "📝",
+    title: "Editor Markdown",
+    desc: "TipTap para compartir fragmentos de código con resaltado",
+  },
+  {
+    icon: "🏆",
+    title: "Sistema de rangos",
+    desc: "Junior / Mid / Senior con mentoría 1 a 1",
+  },
+  {
+    icon: "🎯",
+    title: "Feed personalizado",
+    desc: "Algoritmo basado en tecnologías e interacción",
+  },
+  {
+    icon: "🔔",
+    title: "Newsletter",
+    desc: "Integración con Resend para novedades y eventos",
+  },
+];
+---
+
+<section class="section" id="retos">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">05 · Retos y Mejoras</div>
+      <h2 class="section-title">
+        Problemas reales,<br />soluciones reales
+      </h2>
+      <p class="section-subtitle">
+        El desarrollo nunca es lineal. Estos son los obstáculos técnicos
+        encontrados durante el proyecto y cómo se resolvieron.
+      </p>
+    </div>
+
+    <!-- Retos -->
+    <div class="challenges-grid">
+      {
+        challenges.map((c, i) => (
+          <div class={`challenge-card card reveal reveal-delay-${(i % 3) + 1}`}>
+            <div class="challenge-top">
+              <span class="challenge-icon">{c.icon}</span>
+              <span class="challenge-label">{c.label}</span>
+            </div>
+            <h3 class="challenge-title">{c.title}</h3>
+            <p class="challenge-desc">{c.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Mejoras futuras -->
+    <div class="improvements-block reveal">
+      <div class="improvements-header">
+        <div class="section-label">Roadmap · Mejoras propuestas</div>
+        <h3 class="improvements-title">Lo que viene después</h3>
+      </div>
+      <div class="improvements-grid">
+        {
+          improvements.map((imp, i) => (
+            <div class={`improvement-item reveal reveal-delay-${(i % 3) + 1}`}>
+              <span class="improvement-icon">{imp.icon}</span>
+              <div>
+                <div class="improvement-title">{imp.title}</div>
+                <div class="improvement-desc">{imp.desc}</div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-header {
+    margin-bottom: 56px;
+    max-width: 600px;
+  }
+
+  /* Grid de retos */
+  .challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 56px;
+  }
+
+  .challenge-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .challenge-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .challenge-icon {
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+
+  .challenge-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    background: var(--color-01);
+    border: 1px solid var(--color-02);
+    border-radius: 100px;
+    padding: 3px 9px;
+  }
+
+  .challenge-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--gris-01);
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+  }
+
+  .challenge-desc {
+    font-size: 0.82rem;
+    color: var(--gris-03);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  /* Mejoras */
+  .improvements-block {
+    background: var(--bg-02);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 40px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .improvements-header {
+    margin-bottom: 32px;
+  }
+
+  .improvements-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gris-01);
+    letter-spacing: -0.02em;
+    margin-top: 10px;
+  }
+
+  .improvements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .improvement-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px;
+    background: var(--gris-10);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    transition: all 0.15s ease;
+  }
+
+  .improvement-item:hover {
+    border-color: var(--border);
+    background: var(--bg-01);
+  }
+
+  .improvement-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .improvement-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gris-01);
+    margin-bottom: 4px;
+  }
+
+  .improvement-desc {
+    font-size: 0.78rem;
+    color: var(--gris-04);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 900px) {
+    .challenges-grid,
+    .improvements-grid {
+      grid-template-columns: 1fr;
+    }
+    .improvements-block {
+      padding: 24px;
+    }
+  }
+</style>

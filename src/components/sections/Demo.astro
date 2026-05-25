@@ -1,0 +1,265 @@
+---
+const APP_URL = 'https://loop-tfg.vercel.app';
+
+const steps = [
+  {
+    num: '01',
+    title: 'Registro de usuario',
+    desc: 'El usuario crea su cuenta con email y contraseña. El backend valida los datos, hashea la contraseña con bcrypt y emite un par de tokens JWT.',
+    tech: ['bcrypt', 'JWT', 'class-validator'],
+    icon: '👤',
+  },
+  {
+    num: '02',
+    title: 'Crear un post',
+    desc: 'Publicación de contenido de hasta 280 caracteres, con etiquetas de tecnología asociadas. Validación en cliente y en servidor antes de persistir.',
+    tech: ['Server Actions', 'Zod', 'Prisma'],
+    icon: '✍️',
+  },
+  {
+    num: '03',
+    title: 'Guardar un post',
+    desc: 'El usuario puede guardar cualquier post con un clic. Se añade a su carpeta por defecto "Favoritos" y se puede mover entre carpetas.',
+    tech: ['React Query', 'Optimistic UI', 'PostgreSQL'],
+    icon: '🔖',
+  },
+  {
+    num: '04',
+    title: 'Gestionar carpetas',
+    desc: 'Creación, renombrado y eliminación de carpetas personalizadas. Las restricciones UNIQUE a nivel de BD garantizan nombres únicos por usuario.',
+    tech: ['Prisma constraints', 'NestJS', 'ShadCN'],
+    icon: '📁',
+  },
+];
+---
+
+<section class="section demo-section" id="demo">
+  <div class="container">
+
+    <div class="demo-header reveal">
+      <div class="section-label">04 · Demo en vivo</div>
+      <h2 class="section-title">Loop en acción</h2>
+      <p class="section-subtitle">
+        Flujo completo de usuario: desde el registro hasta la organización del contenido guardado.
+        Cada paso refleja decisiones técnicas deliberadas en el backend.
+      </p>
+    </div>
+
+    <!-- Stepper -->
+    <div class="steps-container">
+      {steps.map((step, i) => (
+        <div class={`step reveal reveal-delay-${i + 1}`}>
+          <!-- Línea conectora -->
+          <div class="step-connector" aria-hidden="true">
+            <div class="step-num">{step.num}</div>
+            {i < steps.length - 1 && <div class="step-line"></div>}
+          </div>
+
+          <!-- Contenido -->
+          <div class="step-content card">
+            <div class="step-top">
+              <span class="step-icon">{step.icon}</span>
+              <h3 class="step-title">{step.title}</h3>
+            </div>
+            <p class="step-desc">{step.desc}</p>
+            <div class="step-tech">
+              {step.tech.map(t => (
+                <span class="step-tech-badge">{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA final -->
+    <div class="demo-cta reveal">
+      <div class="demo-cta-inner">
+        <div class="demo-cta-text">
+          <h3 class="demo-cta-title">¿Quieres probarlo tú mismo?</h3>
+          <p class="demo-cta-desc">La aplicación está desplegada y completamente funcional.</p>
+        </div>
+        <a href={APP_URL} target="_blank" rel="noopener noreferrer" class="demo-cta-btn">
+          Abrir Loop
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17L17 7M17 7H7M17 7v10" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .demo-section {
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .demo-header {
+    margin-bottom: 56px;
+    max-width: 600px;
+  }
+
+  /* Steps */
+  .steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 56px;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+  }
+
+  .step-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .step-num {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    flex-shrink: 0;
+    box-shadow: var(--shadow-primary);
+    z-index: 1;
+  }
+
+  .step-line {
+    flex: 1;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--color-03), var(--border-subtle));
+    margin: 8px 0;
+    min-height: 24px;
+  }
+
+  .step-content {
+    margin-bottom: 20px;
+  }
+
+  .step-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .step-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .step-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--gris-01);
+    letter-spacing: -0.02em;
+  }
+
+  .step-desc {
+    font-size: 0.875rem;
+    color: var(--gris-03);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .step-tech {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .step-tech-badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+    font-family: var(--font-mono);
+    color: var(--primary-color);
+    background: var(--color-01);
+    border: 1px solid var(--color-02);
+    border-radius: var(--radius-sm);
+    padding: 3px 9px;
+  }
+
+  /* CTA */
+  .demo-cta {
+    background: var(--bg-02);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: 32px 40px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .demo-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .demo-cta-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gris-01);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .demo-cta-desc {
+    font-size: 0.875rem;
+    color: var(--gris-04);
+  }
+
+  .demo-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: var(--shadow-primary);
+    transition: all 0.2s ease;
+  }
+
+  .demo-cta-btn:hover {
+    background: var(--color-07);
+    box-shadow: 0 6px 24px rgba(83, 92, 250, 0.3);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 700px) {
+    .step {
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+    }
+
+    .demo-cta-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .demo-cta-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

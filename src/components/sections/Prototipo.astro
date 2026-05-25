@@ -1,0 +1,444 @@
+---
+const FIGMA_URL =
+  "https://www.figma.com/design/4xVWYSYxyKAUJlOHHK5fcw/Loop?node-id=3-9&t=UFnEw1DuXAVv3m7P-0";
+
+const screens = [
+  { name: "Login", icon: "🔐", desc: "Acceso seguro con JWT" },
+  { name: "Home · Feed", icon: "🏠", desc: "Infinite scroll por cursor" },
+  { name: "Perfil", icon: "👤", desc: "Edición y seguimiento" },
+  { name: "Guardados", icon: "🔖", desc: "Carpetas personalizadas" },
+  { name: "Dashboard", icon: "⚙️", desc: "Panel de administración" },
+];
+
+const designDecisions = [
+  {
+    title: "Estética Vercel / Supabase",
+    desc: "Light mode, espaciado generoso, tipografía fuerte. Interfaz limpia que no distrae del contenido.",
+  },
+  {
+    title: "ShadCN como base",
+    desc: "Componentes accesibles por defecto, totalmente personalizables. Sin comprometer el control del código.",
+  },
+  {
+    title: "Mobile-first",
+    desc: "Diseñado primero para móvil y escalado a pantallas mayores. El feed funciona perfectamente en cualquier dispositivo.",
+  },
+];
+---
+
+<section class="section" id="prototipo">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">03 · Prototipo</div>
+      <h2 class="section-title">
+        Del wireframe<br />a la realidad
+      </h2>
+      <p class="section-subtitle">
+        Alta fidelidad en Figma antes de escribir una línea de código. El
+        prototipo sirvió como contrato visual entre diseño y desarrollo.
+      </p>
+    </div>
+
+    <div class="prototype-grid">
+      <!-- Panel principal con Figma embed placeholder -->
+      <div class="figma-panel reveal">
+        <div class="figma-header">
+          <div class="figma-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="figma-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+              ><path
+                d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"
+                fill="#F24E1E"></path><path
+                d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"
+                fill="#FF7262"></path><path
+                d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
+                fill="#1ABCFE"></path><path
+                d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"
+                fill="#0ACF83"></path><path
+                d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"
+                fill="#0ACF83"></path></svg
+            >
+            Loop · Alta Fidelidad · Figma
+          </div>
+          <a
+            href={FIGMA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="figma-open-btn"
+          >
+            Abrir en Figma
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path d="M7 17L17 7M17 7H7M17 7v10"></path></svg
+            >
+          </a>
+        </div>
+
+        <!-- Pantallas de vista previa -->
+        <div class="screens-preview">
+          {
+            screens.map((screen, i) => (
+              <div class={`screen-card reveal reveal-delay-${i + 1}`}>
+                <div class="screen-icon">{screen.icon}</div>
+                <div class="screen-info">
+                  <div class="screen-name">{screen.name}</div>
+                  <div class="screen-desc">{screen.desc}</div>
+                </div>
+                <div class="screen-badge">Vista</div>
+              </div>
+            ))
+          }
+        </div>
+
+        <div class="figma-cta">
+          <a
+            href={FIGMA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="figma-cta-btn"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              ><path
+                d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"
+                fill="#F24E1E"></path><path
+                d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"
+                fill="#FF7262"></path><path
+                d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"
+                fill="#1ABCFE"></path><path
+                d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"
+                fill="#0ACF83"></path><path
+                d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"
+                fill="#0ACF83"></path></svg
+            >
+            Ver prototipo completo en Figma
+          </a>
+        </div>
+      </div>
+
+      <!-- Decisiones de diseño -->
+      <div class="design-decisions">
+        <h3 class="decisions-title reveal">Decisiones de diseño</h3>
+        <div class="decisions-list">
+          {
+            designDecisions.map((d, i) => (
+              <div class={`decision-item reveal reveal-delay-${i + 1}`}>
+                <div class="decision-num">0{i + 1}</div>
+                <div class="decision-body">
+                  <div class="decision-title">{d.title}</div>
+                  <div class="decision-desc">{d.desc}</div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <!-- Stat block -->
+        <div class="design-stats reveal">
+          <div class="design-stat">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Vistas principales</div>
+          </div>
+          <div class="design-stat-divider"></div>
+          <div class="design-stat">
+            <div class="stat-number">1</div>
+            <div class="stat-label">Design system unificado</div>
+          </div>
+          <div class="design-stat-divider"></div>
+          <div class="design-stat">
+            <div class="stat-number">AF</div>
+            <div class="stat-label">Alta fidelidad</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-header {
+    margin-bottom: 56px;
+    max-width: 600px;
+  }
+
+  .prototype-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* Panel Figma */
+  .figma-panel {
+    background: var(--bg-02);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+
+  .figma-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--gris-10);
+  }
+
+  .figma-dots {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .figma-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .figma-dots span:nth-child(1) {
+    background: #ff5f57;
+  }
+  .figma-dots span:nth-child(2) {
+    background: #febc2e;
+  }
+  .figma-dots span:nth-child(3) {
+    background: #28c840;
+  }
+
+  .figma-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--gris-04);
+    font-family: var(--font-mono);
+    flex: 1;
+  }
+
+  .figma-open-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--gris-02);
+    text-decoration: none;
+    background: var(--bg-02);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 4px 10px;
+    transition: all 0.15s ease;
+  }
+
+  .figma-open-btn:hover {
+    border-color: var(--gris-06);
+    background: var(--gris-10);
+  }
+
+  .screens-preview {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .screen-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--gris-10);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    transition: all 0.15s ease;
+    cursor: default;
+  }
+
+  .screen-card:hover {
+    border-color: var(--border);
+    background: var(--bg-02);
+  }
+
+  .screen-icon {
+    font-size: 1.2rem;
+    width: 36px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .screen-info {
+    flex: 1;
+  }
+
+  .screen-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gris-01);
+    margin-bottom: 2px;
+  }
+
+  .screen-desc {
+    font-size: 0.75rem;
+    color: var(--gris-04);
+  }
+
+  .screen-badge {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--gris-04);
+    background: var(--bg-02);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 3px 9px;
+  }
+
+  .figma-cta {
+    padding: 16px 20px 20px;
+  }
+
+  .figma-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-primary);
+  }
+
+  .figma-cta-btn:hover {
+    background: var(--color-07);
+    box-shadow: 0 6px 24px rgba(83, 92, 250, 0.3);
+    transform: translateY(-1px);
+  }
+
+  /* Decisiones */
+  .design-decisions {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .decisions-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gris-01);
+    letter-spacing: -0.02em;
+  }
+
+  .decisions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--bg-02);
+  }
+
+  .decision-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px;
+    border-bottom: 1px solid var(--border-subtle);
+    transition: background 0.15s ease;
+  }
+
+  .decision-item:last-child {
+    border-bottom: none;
+  }
+
+  .decision-item:hover {
+    background: var(--gris-10);
+  }
+
+  .decision-num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--primary-color);
+    background: var(--color-01);
+    border: 1px solid var(--color-02);
+    border-radius: var(--radius-sm);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .decision-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gris-01);
+    margin-bottom: 4px;
+  }
+
+  .decision-desc {
+    font-size: 0.8rem;
+    color: var(--gris-04);
+    line-height: 1.5;
+  }
+
+  /* Stats */
+  .design-stats {
+    display: flex;
+    align-items: center;
+    background: var(--bg-02);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    gap: 0;
+  }
+
+  .design-stat {
+    flex: 1;
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    letter-spacing: -0.03em;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    color: var(--gris-04);
+    margin-top: 2px;
+    line-height: 1.3;
+  }
+
+  .design-stat-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--border);
+  }
+
+  @media (max-width: 900px) {
+    .prototype-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

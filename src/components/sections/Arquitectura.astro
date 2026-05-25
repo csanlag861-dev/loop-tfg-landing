@@ -1,0 +1,524 @@
+---
+const frontend = [
+  {
+    name: "Next.js 15",
+    detail: "App Router · Server Components · Server Actions",
+    color: "#000",
+  },
+  {
+    name: "React Query",
+    detail: "Infinite scroll · Optimistic UI · Cache",
+    color: "#FF4154",
+  },
+  {
+    name: "ShadCN + Tailwind",
+    detail: "Componentes accesibles · Design system",
+    color: "#000",
+  },
+  {
+    name: "NUQS",
+    detail: "URL state management · Server sync",
+    color: "#535cfa",
+  },
+  {
+    name: "TypeScript",
+    detail: "Tipado estático end-to-end",
+    color: "#007ACC",
+  },
+];
+
+const backend = [
+  {
+    name: "NestJS 11",
+    detail: "Arquitectura modular · Feature-based · SOLID",
+    color: "#E0234E",
+  },
+  {
+    name: "Prisma ORM",
+    detail: "Tipado estático · Migraciones · Soft delete",
+    color: "#3982CE",
+  },
+  {
+    name: "PostgreSQL",
+    detail: "Base de datos relacional principal",
+    color: "#316192",
+  },
+  {
+    name: "Passport + JWT",
+    detail: "Dual token · Session sliding · Guards",
+    color: "#333",
+  },
+  {
+    name: "Docker",
+    detail: "Multi-stage build · Compose dev/prod",
+    color: "#0db7ed",
+  },
+];
+
+const principles = [
+  { label: "SOLID", desc: "Aplicado capa a capa" },
+  { label: "Feature-based", desc: "Módulos por dominio" },
+  { label: "Clean Code", desc: "Legibilidad primero" },
+  { label: "DRY", desc: "Sin duplicación" },
+];
+---
+
+<section class="section arch-section" id="arquitectura">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">02 · Arquitectura</div>
+      <h2 class="section-title">
+        Diseñada para crecer<br />sin romperse
+      </h2>
+      <p class="section-subtitle">
+        Separación estricta de responsabilidades, módulos independientes y
+        decisiones técnicas justificadas en cada capa del sistema.
+      </p>
+    </div>
+
+    <!-- Diagrama de arquitectura -->
+    <div class="arch-diagram reveal">
+      <div class="arch-layer arch-layer--browser">
+        <div class="arch-layer-label">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            ><rect x="2" y="3" width="20" height="14" rx="2"></rect><path
+              d="M8 21h8M12 17v4"></path></svg
+          >
+          Navegador
+        </div>
+        <div class="arch-nodes">
+          <div class="arch-node">Next.js 15<br /><span>App Router</span></div>
+          <div class="arch-node">
+            React Query<br /><span>Cache & Sync</span>
+          </div>
+          <div class="arch-node">ShadCN<br /><span>UI Components</span></div>
+        </div>
+      </div>
+
+      <div class="arch-arrow" aria-hidden="true">
+        <div class="arch-arrow-line"></div>
+        <div class="arch-arrow-label">HTTP · JWT Bearer</div>
+        <div class="arch-arrow-line"></div>
+      </div>
+
+      <div class="arch-layer arch-layer--backend">
+        <div class="arch-layer-label">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            ><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect
+              x="2"
+              y="14"
+              width="20"
+              height="8"
+              rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line
+              x1="6"
+              y1="18"
+              x2="6.01"
+              y2="18"></line></svg
+          >
+          Backend · NestJS
+        </div>
+        <div class="arch-nodes">
+          <div class="arch-node">Controllers<br /><span>HTTP Layer</span></div>
+          <div class="arch-node arch-node--primary">
+            Services<br /><span>Business Logic</span>
+          </div>
+          <div class="arch-node">Guards<br /><span>Auth & Roles</span></div>
+        </div>
+      </div>
+
+      <div class="arch-arrow" aria-hidden="true">
+        <div class="arch-arrow-line"></div>
+        <div class="arch-arrow-label">Prisma Client · ORM tipado</div>
+        <div class="arch-arrow-line"></div>
+      </div>
+
+      <div class="arch-layer arch-layer--data">
+        <div class="arch-layer-label">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            ><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path
+              d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path
+              d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg
+          >
+          Datos
+        </div>
+        <div class="arch-nodes">
+          <div class="arch-node">
+            PostgreSQL<br /><span>Base de datos</span>
+          </div>
+          <div class="arch-node">
+            Supabase Storage<br /><span>Avatares · Imágenes</span>
+          </div>
+          <div class="arch-node">Docker<br /><span>Contenedores</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stack detallado -->
+    <div class="stack-grid">
+      <div class="stack-col reveal reveal-delay-1">
+        <div class="stack-col-header">
+          <div class="stack-col-dot" style="background: #000;"></div>
+          <h3 class="stack-col-title">Frontend</h3>
+        </div>
+        <div class="stack-items">
+          {
+            frontend.map((item) => (
+              <div class="stack-item">
+                <div
+                  class="stack-item-dot"
+                  style={`background: ${item.color}`}
+                />
+                <div>
+                  <div class="stack-item-name">{item.name}</div>
+                  <div class="stack-item-detail">{item.detail}</div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="stack-col reveal reveal-delay-2">
+        <div class="stack-col-header">
+          <div class="stack-col-dot" style="background: #E0234E;"></div>
+          <h3 class="stack-col-title">Backend</h3>
+        </div>
+        <div class="stack-items">
+          {
+            backend.map((item) => (
+              <div class="stack-item">
+                <div
+                  class="stack-item-dot"
+                  style={`background: ${item.color}`}
+                />
+                <div>
+                  <div class="stack-item-name">{item.name}</div>
+                  <div class="stack-item-detail">{item.detail}</div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="stack-col reveal reveal-delay-3">
+        <div class="stack-col-header">
+          <div class="stack-col-dot" style="background: var(--primary-color);">
+          </div>
+          <h3 class="stack-col-title">Principios</h3>
+        </div>
+        <div class="principles-grid">
+          {
+            principles.map((p, i) => (
+              <div class={`principle-card reveal reveal-delay-${i + 1}`}>
+                <div class="principle-label">{p.label}</div>
+                <div class="principle-desc">{p.desc}</div>
+              </div>
+            ))
+          }
+        </div>
+        <div class="deploy-block">
+          <div class="deploy-label">Deploy</div>
+          <div class="deploy-chain">
+            <span class="deploy-step">GitHub</span>
+            <span class="deploy-arrow">→</span>
+            <span class="deploy-step">Docker Build</span>
+            <span class="deploy-arrow">→</span>
+            <span class="deploy-step">Dokploy</span>
+            <span class="deploy-arrow">→</span>
+            <span class="deploy-step">Proxmox</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .arch-section {
+    background: linear-gradient(
+      to bottom,
+      var(--bg-01),
+      var(--gris-10),
+      var(--bg-01)
+    );
+  }
+
+  .section-header {
+    margin-bottom: 56px;
+    max-width: 600px;
+  }
+
+  /* Diagrama */
+  .arch-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 64px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    background: var(--bg-02);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+
+  .arch-layer {
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .arch-layer:last-child {
+    border-bottom: none;
+  }
+
+  .arch-layer--backend {
+    background: rgba(224, 35, 78, 0.02);
+  }
+
+  .arch-layer--data {
+    background: rgba(83, 92, 250, 0.02);
+  }
+
+  .arch-layer-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gris-04);
+    margin-bottom: 16px;
+  }
+
+  .arch-nodes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .arch-node {
+    flex: 1;
+    min-width: 120px;
+    background: var(--gris-10);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--gris-01);
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .arch-node--primary {
+    background: var(--color-01);
+    border-color: var(--color-02);
+    color: var(--primary-color);
+  }
+
+  .arch-node span {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--gris-04);
+    margin-top: 2px;
+  }
+
+  .arch-node--primary span {
+    color: var(--color-04);
+  }
+
+  .arch-arrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 32px;
+    height: 40px;
+    background: var(--bg-01);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .arch-arrow-line {
+    flex: 1;
+    height: 1px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--gris-07) 0,
+      var(--gris-07) 6px,
+      transparent 6px,
+      transparent 12px
+    );
+  }
+
+  .arch-arrow-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--gris-04);
+    white-space: nowrap;
+    font-family: var(--font-mono);
+  }
+
+  /* Stack grid */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
+  .stack-col {
+    background: var(--bg-02);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .stack-col-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .stack-col-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .stack-col-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--gris-01);
+    letter-spacing: -0.01em;
+  }
+
+  .stack-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .stack-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .stack-item-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+
+  .stack-item-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gris-01);
+    margin-bottom: 2px;
+  }
+
+  .stack-item-detail {
+    font-size: 0.75rem;
+    color: var(--gris-04);
+    line-height: 1.4;
+  }
+
+  /* Principles */
+  .principles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .principle-card {
+    background: var(--gris-10);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    text-align: center;
+  }
+
+  .principle-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 3px;
+  }
+
+  .principle-desc {
+    font-size: 0.72rem;
+    color: var(--gris-04);
+  }
+
+  /* Deploy */
+  .deploy-block {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 16px;
+  }
+
+  .deploy-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gris-05);
+    margin-bottom: 10px;
+  }
+
+  .deploy-chain {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .deploy-step {
+    font-size: 0.72rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    background: var(--color-01);
+    color: var(--primary-color);
+    border: 1px solid var(--color-02);
+    border-radius: var(--radius-sm);
+    padding: 3px 8px;
+  }
+
+  .deploy-arrow {
+    font-size: 0.75rem;
+    color: var(--gris-05);
+  }
+
+  @media (max-width: 900px) {
+    .stack-grid {
+      grid-template-columns: 1fr;
+    }
+    .arch-nodes {
+      flex-direction: column;
+    }
+  }
+</style>

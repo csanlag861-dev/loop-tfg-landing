@@ -1,17 +1,25 @@
 ---
-
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/layouts/Header.astro";
+import Hero from "../components/sections/Hero.astro";
+import Reto from "../components/sections/Reto.astro";
+import Demo from "../components/sections/Demo.astro";
+import Arquitectura from "../components/sections/Arquitectura.astro";
+import Problema from "../components/sections/Problema.astro";
+import Prototipo from "../components/sections/Prototipo.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout>
+  <Header />
+  <main>
+    <Hero />
+    <Problema />
+    <Arquitectura />
+    <Prototipo />
+    <Demo />
+    <Reto />
+    <!-- Próximamente:
+    <TechHighlights />
+    -->
+  </main>
+</MainLayout>

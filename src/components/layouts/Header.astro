@@ -1,0 +1,220 @@
+---
+const APP_URL = "https://loop-tfg.vercel.app";
+
+const navLinks = [
+  { label: "El Problema", href: "#problema" },
+  { label: "Arquitectura", href: "#arquitectura" },
+  { label: "Prototipo", href: "#prototipo" },
+  { label: "Demo", href: "#demo" },
+  { label: "Retos", href: "#retos" },
+  { label: "Técnico", href: "#tecnico" },
+];
+---
+
+<header class="header" id="header">
+  <div class="container header-inner">
+    <!-- Logo -->
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z"
+            stroke="currentColor"
+            stroke-width="2"></path>
+          <path
+            d="M8 12c0-2.21 1.79-4 4-4s4 1.79 4 4-1.79 4-4 4"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"></path>
+        </svg>
+      </div>
+      <span class="logo-text">Loop</span>
+      <span class="logo-badge">TFG</span>
+    </a>
+
+    <!-- Nav links — se ocultan en móvil -->
+    <nav class="nav" aria-label="Navegación principal">
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class="nav-link">
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- CTA -->
+    <a
+      href={APP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-primary"
+    >
+      Ver App
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M7 17L17 7M17 7H7M17 7v10"></path>
+      </svg>
+    </a>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background: rgba(250, 250, 250, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .header.scrolled {
+    border-bottom-color: var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    width: 100%;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--primary-color);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .logo-text {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gris-01);
+    letter-spacing: -0.02em;
+  }
+
+  .logo-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--primary-color);
+    background: var(--color-01);
+    border: 1px solid var(--color-02);
+    border-radius: 100px;
+    padding: 2px 7px;
+  }
+
+  /* Nav */
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--gris-03);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    transition:
+      color 0.15s ease,
+      background 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    color: var(--gris-01);
+    background: var(--gris-10);
+  }
+
+  /* CTA Button */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+    background: var(--primary-color);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 8px 16px;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition:
+      background 0.15s ease,
+      box-shadow 0.15s ease,
+      transform 0.15s ease;
+    box-shadow: var(--shadow-primary);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-07);
+    box-shadow: 0 6px 24px rgba(83, 92, 250, 0.3);
+    transform: translateY(-1px);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav {
+      display: none;
+    }
+
+    .header-inner {
+      justify-content: space-between;
+    }
+  }
+</style>
+
+<script>
+  const header = document.getElementById("header");
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (window.scrollY > 10) {
+        header?.classList.add("scrolled");
+      } else {
+        header?.classList.remove("scrolled");
+      }
+    },
+    { passive: true },
+  );
+</script>

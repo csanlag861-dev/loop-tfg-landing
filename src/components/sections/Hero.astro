@@ -1,0 +1,523 @@
+---
+const APP_URL = "https://loop-tfg.vercel.app";
+
+const techBadges = [
+  { name: "Next.js 15", color: "#000000" },
+  { name: "NestJS 11", color: "#E0234E" },
+  { name: "PostgreSQL", color: "#316192" },
+  { name: "Prisma ORM", color: "#3982CE" },
+  { name: "Docker", color: "#0db7ed" },
+  { name: "TypeScript", color: "#007ACC" },
+];
+---
+
+<section class="hero" id="inicio">
+  <!-- Glow de fondo -->
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div class="container hero-inner">
+    <div class="hero-content animate-fade-in-up">
+      <!-- Label -->
+      <div class="section-label">
+        <span>Trabajo de Fin de Grado · 2025</span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="hero-title">
+        La red social donde
+        <br />
+        <span class="hero-title-accent">el ecosistema IT</span>
+        <br />
+        conecta y evoluciona
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="hero-subtitle">
+        Loop es una plataforma diseñada para que desarrolladores y profesionales
+        IT compartan ideas, retos y experiencias. Un espacio donde juniors
+        aprenden directamente de la experiencia de los seniors.
+      </p>
+
+      <!-- Autor -->
+      <div class="hero-author">
+        <div class="author-avatar">CS</div>
+        <div class="author-info">
+          <span class="author-name">Cristian Sánchez Lagos</span>
+          <span class="author-role">Desarrollo de Aplicaciones Web · TFG</span>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="hero-actions">
+        <a
+          href={APP_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero-btn-primary"
+        >
+          Ver la aplicación
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M7 17L17 7M17 7H7M17 7v10"></path>
+          </svg>
+        </a>
+        <a href="#problema" class="hero-btn-secondary">
+          Ver la presentación
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 5v14M5 12l7 7 7-7"></path>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Tech stack badges -->
+      <div class="hero-stack">
+        <span class="hero-stack-label">Stack tecnológico</span>
+        <div class="hero-badges">
+          {
+            techBadges.map((badge, i) => (
+              <div
+                class={`badge hero-badge delay-${i + 1} animate-fade-in`}
+                style={`--badge-color: ${badge.color}`}
+              >
+                <span class="badge-dot" />
+                {badge.name}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual decorativo -->
+    <div class="hero-visual animate-fade-in delay-3" aria-hidden="true">
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <div class="hero-card-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <span class="hero-card-title">loop · feed</span>
+        </div>
+        <div class="hero-card-body">
+          <!-- Post simulado 1 -->
+          <div class="fake-post">
+            <div
+              class="fake-avatar"
+              style="background: #535cfa22; color: #535cfa;"
+            >
+              CR
+            </div>
+            <div class="fake-content">
+              <div class="fake-name">
+                carlos_dev <span class="fake-time">· 2m</span>
+              </div>
+              <div class="fake-text">
+                Acabo de migrar a React Server Components y la diferencia en
+                rendimiento es brutal 🚀
+              </div>
+              <div class="fake-tags">
+                <span class="fake-tag">React</span>
+                <span class="fake-tag">Next.js</span>
+              </div>
+              <div class="fake-actions">
+                <span>♥ 24</span>
+                <span>💬 8</span>
+                <span>🔖 Guardar</span>
+              </div>
+            </div>
+          </div>
+          <!-- Post simulado 2 -->
+          <div class="fake-post">
+            <div
+              class="fake-avatar"
+              style="background: #22c55e22; color: #16a34a;"
+            >
+              AM
+            </div>
+            <div class="fake-content">
+              <div class="fake-name">
+                ana_martinez <span class="fake-time">· 15m</span>
+              </div>
+              <div class="fake-text">
+                ¿Alguien más usa Prisma con NestJS? El tipado end-to-end con
+                TypeScript es increíble.
+              </div>
+              <div class="fake-tags">
+                <span class="fake-tag">NestJS</span>
+                <span class="fake-tag">Prisma</span>
+              </div>
+              <div class="fake-actions">
+                <span>♥ 41</span>
+                <span>💬 13</span>
+                <span>🔖 Guardar</span>
+              </div>
+            </div>
+          </div>
+          <!-- Post simulado 3 -->
+          <div class="fake-post">
+            <div
+              class="fake-avatar"
+              style="background: #f59e0b22; color: #d97706;"
+            >
+              JL
+            </div>
+            <div class="fake-content">
+              <div class="fake-name">
+                juan_lopez <span class="fake-time">· 1h</span>
+              </div>
+              <div class="fake-text">
+                Consejo para juniors: aprended Docker antes de lo que pensáis.
+                Os va a salvar la vida.
+              </div>
+              <div class="fake-actions">
+                <span>♥ 89</span>
+                <span>💬 32</span>
+                <span>🔖 Guardar</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: 100px 0 80px;
+    overflow: hidden;
+  }
+
+  /* Glow de fondo */
+  .hero-glow {
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(83, 92, 250, 0.08) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  /* Contenido */
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-title-accent {
+    color: var(--primary-color);
+    position: relative;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--gris-03);
+    max-width: 480px;
+  }
+
+  /* Autor */
+  .hero-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .author-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .author-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gris-01);
+  }
+
+  .author-role {
+    font-size: 0.75rem;
+    color: var(--gris-04);
+  }
+
+  /* Botones */
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .hero-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-primary);
+    transition: all 0.2s ease;
+  }
+
+  .hero-btn-primary:hover {
+    background: var(--color-07);
+    box-shadow: 0 8px 28px rgba(83, 92, 250, 0.35);
+    transform: translateY(-2px);
+  }
+
+  .hero-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: var(--bg-02);
+    color: var(--gris-02);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+
+  .hero-btn-secondary:hover {
+    border-color: var(--gris-06);
+    background: var(--gris-10);
+  }
+
+  /* Stack badges */
+  .hero-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hero-stack-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--gris-05);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .hero-badge {
+    font-size: 0.78rem;
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--badge-color, var(--primary-color));
+    flex-shrink: 0;
+  }
+
+  /* Card visual */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-card {
+    background: var(--bg-02);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .hero-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-subtle);
+    background: var(--gris-10);
+  }
+
+  .hero-card-dots {
+    display: flex;
+    gap: 5px;
+  }
+
+  .hero-card-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gris-07);
+  }
+
+  .hero-card-dots span:nth-child(1) {
+    background: #ff5f57;
+  }
+  .hero-card-dots span:nth-child(2) {
+    background: #febc2e;
+  }
+  .hero-card-dots span:nth-child(3) {
+    background: #28c840;
+  }
+
+  .hero-card-title {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--gris-04);
+    font-family: var(--font-mono);
+  }
+
+  .hero-card-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Posts falsos */
+  .fake-post {
+    display: flex;
+    gap: 10px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .fake-post:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .fake-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .fake-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .fake-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--gris-01);
+  }
+
+  .fake-time {
+    font-weight: 400;
+    color: var(--gris-04);
+  }
+
+  .fake-text {
+    font-size: 0.8rem;
+    color: var(--gris-02);
+    line-height: 1.5;
+  }
+
+  .fake-tags {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+  }
+
+  .fake-tag {
+    font-size: 0.7rem;
+    padding: 2px 7px;
+    background: var(--color-01);
+    color: var(--primary-color);
+    border: 1px solid var(--color-02);
+    border-radius: 100px;
+    font-weight: 500;
+  }
+
+  .fake-actions {
+    display: flex;
+    gap: 14px;
+    font-size: 0.72rem;
+    color: var(--gris-04);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-visual {
+      display: none;
+    }
+  }
+</style>
